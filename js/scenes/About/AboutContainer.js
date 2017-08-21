@@ -15,9 +15,8 @@ class AboutContainer extends Component {
       }
     
       componentDidMount() {
-        let endpoint = 'https://robot-data.firebaseio.com/robots.json';
+        let endpoint = 'https://r10app-95fea.firebaseio.com/code_of_conduct.json';
         fetch(endpoint)
-          // if fetch is successful, read our JSON out of the response
           .then(response => response.json())
           .then(data => {
             this.setState({ data });
@@ -42,7 +41,7 @@ class AboutContainer extends Component {
             );
         } else {
             return (
-                <About />
+                <About data={this.state.data} />
             )
         }
     }
