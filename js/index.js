@@ -10,7 +10,7 @@ import { Provider } from 'react-redux'
 import { StackNavigation, NavigationProvider, NavigationContext, NavigationStyles } from '@expo/ex-navigation';
 
 import { Router } from './navagation/routes';
-import { Store } from './redux/store';
+import Store from './redux/store';
 
 const navigationContext = new NavigationContext({
   router: Router,
