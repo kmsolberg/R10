@@ -15,9 +15,9 @@ class AboutContainer extends Component {
       }
     };
 
-      componentDidMount() {
-        this.props.dispatch(fetchConduct())
-      }
+    componentDidMount() {
+      this.props.dispatch(fetchConduct())
+    }
 
     render() {
         if (this.props.isLoading) {

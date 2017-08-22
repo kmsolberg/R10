@@ -1,5 +1,4 @@
 const LOAD_CONDUCT = 'LOAD_CONDUCT';
-const FETCH_CONDUCT = 'FETCH_CONDUCT';
 
 export function loadConduct(conductData) {
     return {
@@ -19,16 +18,6 @@ export function fetchConduct() {
           .catch(error => console.log(`Error fetching JSON: ${error}`));
     }
 }
-
-// export function fetchProfile(userId) {
-//     return function (dispatch) {
-//         fetch(`http://localhost:3001/users/${userId}`)
-//         .then(response => response.json())
-//         .then(userData => {
-//             dispatch(loadUsers(userData));
-//         });
-//     };
-// }
 
 const initialState = {
     conductData: [],
