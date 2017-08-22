@@ -5,6 +5,12 @@ import { ActivityIndicator } from 'react-native';
 import About from './About';
 
 class AboutContainer extends Component {
+
+    static route = {
+      navigationBar: {
+        title: 'About',
+      }
+    };
     
     constructor() {
         super();

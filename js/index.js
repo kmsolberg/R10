@@ -6,12 +6,20 @@ import {
   View
 } from 'react-native';
 
+import { StackNavigation, NavigationProvider } from '@expo/ex-navigation';
+
+import { Router } from './navagation/routes';
 import About from './scenes/About';
+import Schedule from './scenes/Schedule/';
 
 export default class R10 extends Component {
+  
   render() {
     return (
-      <About />
+      <NavigationProvider router={Router}>
+        <StackNavigation navigationUID="root" id="root" initialRoute={Router.getRoute('home')} />
+      </NavigationProvider>
+      // <About />
     );
   }
 }
