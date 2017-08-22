@@ -7,5 +7,9 @@ import Speaker from '../scenes/Speaker/';
 import Faves from '../scenes/Faves/';
 
 export const Router = createRouter(() => ({
-    home: () => Speaker,
+    home: () => About,
+    about: () => About,
+    schedule: () => Schedule,
+    session: () => Session,
+    faves: () => Faves,
   }));

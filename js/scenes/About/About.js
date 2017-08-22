@@ -20,6 +20,7 @@ const About = ({ data }) => (
         </View>
         <FlatList 
             data={data}
+            style={styles.list}
             renderItem={({item}) => 
                 <View>
                     <Text style={styles.item}>{item.title}</Text>

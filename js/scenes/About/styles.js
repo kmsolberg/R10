@@ -26,6 +26,9 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
     },
     aboutHeader: {
-
+        fontWeight: 'bold',
+    },
+    list: {
+        margin: 10,
     },
 });
