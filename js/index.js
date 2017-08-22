@@ -5,37 +5,27 @@ import {
   Text,
   View
 } from 'react-native';
-
-import { StackNavigation, NavigationProvider } from '@expo/ex-navigation';
+import { Provider } from 'react-redux'
+import { StackNavigation, NavigationProvider, NavigationContext } from '@expo/ex-navigation';
 
 import { Router } from './navagation/routes';
+import { Store } from './redux/store';
 
+const navigationContext = new NavigationContext({
+  router: Router,
+  store: Store,
+})
 export default class R10 extends Component {
-  
+
   render() {
     return (
-      <NavigationProvider router={Router}>
-        <StackNavigation navigationUID="root" id="root" initialRoute={Router.getRoute('home')} />
-      </NavigationProvider>
+      <Provider store={Store}>
+        <NavigationProvider context={navigationContext}>
+          <StackNavigation navigationUID="root" id="root" initialRoute={Router.getRoute('navigationBar')} />
+        </NavigationProvider>
+      </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+ 
