@@ -3,10 +3,11 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  StatusBar
 } from 'react-native';
 import { Provider } from 'react-redux'
-import { StackNavigation, NavigationProvider, NavigationContext } from '@expo/ex-navigation';
+import { StackNavigation, NavigationProvider, NavigationContext, NavigationStyles } from '@expo/ex-navigation';
 
 import { Router } from './navagation/routes';
 import { Store } from './redux/store';
@@ -21,7 +22,15 @@ export default class R10 extends Component {
     return (
       <Provider store={Store}>
         <NavigationProvider context={navigationContext}>
-          <StackNavigation navigationUID="root" id="root" initialRoute={Router.getRoute('navigationBar')} />
+          <StatusBar barStyle="light-content" />
+          <StackNavigation 
+            navigationUID="root" 
+            id="root" 
+            initialRoute={Router.getRoute('navigationBar')} 
+            defaultRouteConfig={{
+              styles: { ...NavigationStyles.SlideVertical, }
+            }}
+          />
         </NavigationProvider>
       </Provider>
     );

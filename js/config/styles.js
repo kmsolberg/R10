@@ -2,7 +2,7 @@
  * Global Styles
  */
 
- export const colours = {
+ export const colors = {
     red: '#cf392a',
     mediumGrey: '#999999',
     lightGrey: '#e6e6e6',
@@ -12,6 +12,6 @@
 
  export const typography = {
     baseSize: 16,
-    fontMain: 'Montserrat',
-    fontAccent: 'Montserrat-Light'
+    fontMain: 'Montserrat-Regular',
+    fontMainLight: 'Montserrat-Light'
  }
