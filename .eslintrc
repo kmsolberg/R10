@@ -13,9 +13,9 @@
       "react-native"
     ],
     "parserOptions": {
-      "sourceType": "module",
       "ecmaFeatures": {
-        "jsx": true
+        "jsx": true,
+        "modules": true
       }
     },
     "rules": {
