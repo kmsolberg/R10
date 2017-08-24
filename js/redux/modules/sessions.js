@@ -1,3 +1,5 @@
+import { formatDataObject, formatSessionData } from '../../lib/helperFunctions';
+
 const LOAD_SESSIONS = 'LOAD_SESSIONS';
 
 export function loadSessions(sessionData) {
@@ -12,6 +14,8 @@ export function fetchSessions() {
         let endpoint = 'https://r10app-95fea.firebaseio.com/sessions.json';
         fetch(endpoint)
         .then(response => response.json())
+        // .then(data => formatDataObject(data))
+        .then(data => formatSessionData(data))
         .then(data => {
             dispatch(loadSessions(data));
         })

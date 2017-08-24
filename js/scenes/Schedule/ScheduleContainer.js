@@ -34,6 +34,14 @@ class ScheduleContainer extends Component {
 ScheduleContainer.propTypes = {
     dispatch: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
+    data: PropTypes.arrayOf(PropTypes.shape({
+        description: PropTypes.string,
+        location: PropTypes.string,
+        session_id: PropTypes.string,
+        speaker: PropTypes.string,
+        start_time: PropTypes.number,
+        title: PropTypes.number
+    })).isRequired
 }
 
 function mapStateToProps(state) {
