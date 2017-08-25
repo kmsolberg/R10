@@ -11,6 +11,14 @@ import { Router } from './routes';
 
 import { colors, typography } from '../config/styles';
 
+const defaultRouteConfig = {
+    navigationBar: {
+        tintColor: 'blue'
+    },
+    // renderBackground: () => (
+    //     // returning some component for the background...
+    // );
+}
 class NavigationLayout extends Component {
     static route = {
         navigationBar: {
@@ -23,43 +31,47 @@ class NavigationLayout extends Component {
             <DrawerNavigation
                 id='main'
                 initialItem='about'
-                drawerWidth={300}
-                renderHeader={this._renderHeader}
+                drawerWidth={150}
+                renderHeader={this.renderHeader}
             >
                 <DrawerNavigationItem
                     id='schedule'
                     selectedStyle={styles.selectedItemStyle}
-                    renderTitle={isSelected => this._renderTitle('Schedule', isSelected)}
+                    renderTitle={isSelected => this.renderTitle('Schedule', isSelected)}
                     renderIcon={(isSelected) => this.renderIcon("md-calendar", isSelected)}
                     style={styles.drawer}
+
                 >
                     <StackNavigation
                         id='schedule'
                         initialRoute={Router.getRoute('schedule')}
+                        defaultRouteConfig={defaultRouteConfig}
                     />
                 </DrawerNavigationItem>
 
                 <DrawerNavigationItem
                     id='faves'
                     selectedStyle={styles.selectedItemStyle}
-                    renderTitle={isSelected => this._renderTitle('Faves', isSelected)}
+                    renderTitle={isSelected => this.renderTitle('Faves', isSelected)}
                     renderIcon={(isSelected) => this.renderIcon("md-heart", isSelected)}
                 >
                     <StackNavigation
                         id='faves'
                         initialRoute={Router.getRoute('faves')}
+                        defaultRouteConfig={defaultRouteConfig}
                     />
                 </DrawerNavigationItem>
 
                 <DrawerNavigationItem
                     id='about'
                     selectedStyle={styles.selectedItemStyle}
-                    renderTitle={isSelected => this._renderTitle('About', isSelected)}
+                    renderTitle={isSelected => this.renderTitle('About', isSelected)}
                     renderIcon={(isSelected) => this.renderIcon("md-information-circle", isSelected)}
                 >
                     <StackNavigation
                         id='about'
                         initialRoute={Router.getRoute('about')}
+                        defaultRouteConfig={defaultRouteConfig}
                     />
                 </DrawerNavigationItem>
 
@@ -67,14 +79,14 @@ class NavigationLayout extends Component {
         );
     }
 
-    _renderHeader = () => {
+    renderHeader = () => {
         return (
             <View style={styles.header}>
             </View>
         );
     };
 
-    _renderTitle(text, isSelected) {
+    renderTitle(text, isSelected) {
         return (
             <Text style={[styles.titleText, isSelected ? styles.selectedTitleText : {}]}>
                 {text}
@@ -90,7 +102,7 @@ class NavigationLayout extends Component {
 
 const styles = StyleSheet.create({
     header: {
-        height: 20
+        height: 20,
     },
 
     selectedItemStyle: {
