@@ -47,7 +47,7 @@ class ConductItem extends Component {
                     <View style={styles.aboutInfo}>
                         <Animated.Text style={[animatedStyle]}>{this.state.display ? '-' : '+'}
                         </Animated.Text>
-                        <Text style={styles.item}> {this.props.data.title}</Text>
+                        <Text> {this.props.data.title}</Text>
                     </View>
                 </TouchableOpacity>
                 {this.state.display && <Text style={styles.item}>{this.props.data.description}</Text>}
