@@ -4,10 +4,10 @@ import { Text, View } from 'react-native';
 
 import { styles } from './styles';
 
-const Session = () => (
+const Session = ({sessionData}) => (
     <View>
         <Text>
-            This is the Session scene!
+            {sessionData.description}
         </Text>
     </View>
 );

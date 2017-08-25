@@ -2,19 +2,18 @@ import { formatDataObject, formatSessionData } from '../../lib/helperFunctions';
 
 const LOAD_SESSIONS = 'LOAD_SESSIONS';
 
-export function loadSessions(sessionData) {
+function loadSessions(sessionData) {
     return {
         type: LOAD_SESSIONS,
         payload: sessionData
     }
 }
 
-export function fetchSessions() {
+export function fetchSessions(session_id) {
     return function(dispatch) {
         let endpoint = 'https://r10app-95fea.firebaseio.com/sessions.json';
         fetch(endpoint)
         .then(response => response.json())
-        // .then(data => formatDataObject(data))
         .then(data => formatSessionData(data))
         .then(data => {
             dispatch(loadSessions(data));
@@ -22,6 +21,20 @@ export function fetchSessions() {
         .catch(error => console.log(`Error fetching JSON: ${error}`));
     }
 }
+
+// export function fetchSingleSession(session_id) {
+//     return function(dispatch) {
+//         let endpoint = 'https://r10app-95fea.firebaseio.com/sessions.json';
+//         fetch(endpoint)
+//         .then(response => response.json())
+//         .then(json => {
+//             const singleSession = json.find(session => {
+//                 return session.session_id = session_id            
+//             })
+//             dispatch(loadSessions(singleSession))
+//         })
+//     }
+// }
 
 const initialState = {
     sessionData: [],

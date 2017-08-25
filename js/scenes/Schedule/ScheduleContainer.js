@@ -25,7 +25,7 @@ class ScheduleContainer extends Component {
             );
         } else {
             return (
-                <Schedule data={this.props.data} />
+                <Schedule sessionData={this.props.data} />
             )
         }
     }
@@ -35,12 +35,15 @@ ScheduleContainer.propTypes = {
     dispatch: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
     data: PropTypes.arrayOf(PropTypes.shape({
-        description: PropTypes.string,
-        location: PropTypes.string,
-        session_id: PropTypes.string,
-        speaker: PropTypes.string,
-        start_time: PropTypes.number,
-        title: PropTypes.number
+        title: PropTypes.number,
+        object: PropTypes.shape({
+            description: PropTypes.string,
+            location: PropTypes.string,
+            session_id: PropTypes.string,
+            speaker: PropTypes.string,
+            start_time: PropTypes.number,
+            title: PropTypes.string,
+        }),
     })).isRequired
 }
 
