@@ -26,7 +26,7 @@ export const removeFave = (faveID) => {
 }
 
 export const getFaves = () => {
-    let faves = realm.objects('Fave')
+    let faves = realm.objects('Fave').map(id => id)
     return faves;
 }
 

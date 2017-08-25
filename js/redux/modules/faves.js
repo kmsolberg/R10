@@ -13,12 +13,12 @@ function loadFaves(favesData) {
 export function fetchFaves() {
     return function(dispatch) {
         let endpoint = 'https://r10app-95fea.firebaseio.com/sessions.json';
-        let favesID = getFaves().map((fave) => fave.id)
+        let favesID = getFaves()
         fetch(endpoint)
         .then(response => response.json())
-        data => data.filter(item => {
-            return item.session_id = favesID
-        })
+        .then(data => data.filter(item => {
+            return favesID.find(el=> item.session_id === el.id)
+        }))
         .then(data => formatSessionData(data))
         .then(data => {
             dispatch(loadFaves(data));
