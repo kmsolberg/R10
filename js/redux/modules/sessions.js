@@ -22,20 +22,6 @@ export function fetchSessions(session_id) {
     }
 }
 
-// export function fetchSingleSession(session_id) {
-//     return function(dispatch) {
-//         let endpoint = 'https://r10app-95fea.firebaseio.com/sessions.json';
-//         fetch(endpoint)
-//         .then(response => response.json())
-//         .then(json => {
-//             const singleSession = json.find(session => {
-//                 return session.session_id = session_id            
-//             })
-//             dispatch(loadSessions(singleSession))
-//         })
-//     }
-// }
-
 const initialState = {
     sessionData: [],
     isLoading: true

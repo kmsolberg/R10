@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Session from './Session';
-import { fetchSingleSession } from '../../redux/modules/sessions';
 
 class SessionContainer extends Component {
 
@@ -13,12 +13,14 @@ class SessionContainer extends Component {
         }
     };
 
-    // componentDidMount() {
-    //     this.props.dispatch(fetchSingleSession(this.session_id))
-    // }
-
     render() {
-        return <Session sessionData={this.props.sessionData}/>;
+        if (this.props.isLoading) {
+            return (
+                <ActivityIndicator animating={true} size="small" color="black" />
+            );
+        } else {
+            return <Session sessionData={this.props.sessionData} />;
+        }
     }
 }
 
@@ -38,10 +40,4 @@ SessionContainer.propTypes = {
     })).isRequired
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         isLoading: state.session.isLoading,
-//         sessionData: state.session.sessionData,
-//     }
-// }
 export default (SessionContainer);
