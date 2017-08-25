@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, LayoutAnimation } from 'react-native';
 import { connect } from 'react-redux';
 
 import { fetchConduct } from '../../redux/modules/conduct';
@@ -18,6 +18,8 @@ class AboutContainer extends Component {
     componentDidMount() {
       this.props.dispatch(fetchConduct())
     }
+
+
 
     render() {
         if (this.props.isLoading) {

@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, Image, FlatList } from 'react-native';
+import { Text, View, Image, FlatList, LayoutAnimation, TouchableOpacity } from 'react-native';
 
 import { styles } from './styles';
+import ConductItem from '../../components/ConductItem/';
 
-const About = ({ data }) => (
+const About = ({ data, onPress }) => (
+
     <View style={styles.container}>
         <View style={styles.logoContainer}>
             <Image 
@@ -22,10 +24,7 @@ const About = ({ data }) => (
             data={data}
             style={styles.list}
             renderItem={({item}) => 
-                <View>
-                    <Text style={styles.item}>{item.title}</Text>
-                    <Text style={styles.item}>{item.description}</Text>
-                </View>
+                <ConductItem data={item} />
             }
             keyExtractor={(item, index) => index}
         />
