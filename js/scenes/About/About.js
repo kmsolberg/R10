@@ -5,7 +5,7 @@ import { Text, View, Image, FlatList, LayoutAnimation, TouchableOpacity } from '
 import { styles } from './styles';
 import ConductItem from '../../components/ConductItem/';
 
-const About = ({ data, onPress }) => (
+const About = ({ data }) => (
 
     <View style={styles.container}>
         <View style={styles.logoContainer}>
@@ -32,7 +32,10 @@ const About = ({ data, onPress }) => (
 );
 
 About.propTypes = {
-
+    data: PropTypes.arrayOf(PropTypes.shape({
+        description: PropTypes.string,
+        title: PropTypes.string
+      })).isRequired
 }
 
 export default About;

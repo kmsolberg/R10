@@ -4,9 +4,7 @@ import {
     TabNavigation,
     TabNavigationItem as TabItem,
   } from '@expo/ex-navigation';
-
 import { Text } from 'react-native';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { Router } from './routes';
@@ -56,7 +54,7 @@ class NavigationLayout extends Component {
                     id="faves"
                     title="Faves"
                     renderIcon={(isSelected) => this.renderIcon("ios-heart", isSelected)}
-                    renderTitle={this.renderTitle}                    
+                    renderTitle={this.renderTitle}
                 >
                     <StackNavigation
                         id="faves"

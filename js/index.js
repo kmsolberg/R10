@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
-  Text,
-  View,
-  StatusBar
+  StatusBar, 
+  Platform
 } from 'react-native';
 import { Provider } from 'react-redux'
 import { StackNavigation, NavigationProvider, NavigationContext, NavigationStyles } from '@expo/ex-navigation';
@@ -36,5 +34,3 @@ export default class R10 extends Component {
     );
   }
 }
-
- 

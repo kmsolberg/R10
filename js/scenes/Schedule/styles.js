@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 import { colors, typography } from '../../config/styles';
 
@@ -11,11 +11,9 @@ export const styles = StyleSheet.create({
         fontSize: 12,
     },
     itemTitle: {
-        fontFamily: typography.fontMain,
         margin: 10,
     },
     itemLocation: {
-        fontFamily: typography.fontMain,
         color: colors.mediumGrey,
         marginLeft: 10,
         marginBottom: 10,
@@ -26,5 +24,16 @@ export const styles = StyleSheet.create({
         height: StyleSheet.hairlineWidth,
         backgroundColor: colors.lightGrey,
       },
+    container: {
+        flex: 1,
+        ...Platform.select({
+            ios: {
+              fontFamily: typography.fontMain,
+            },
+            android: {
+              fontFamily: typography.fontMainAnd,
+            },
+          }),
+    }
 });
 

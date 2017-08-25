@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, LayoutAnimation, Animated } from 'react-native';
 
+import PropTypes from 'prop-types';
+
 import { styles } from './styles';
 
 class ConductItem extends Component {
@@ -54,6 +56,13 @@ class ConductItem extends Component {
             </View>
         )
     } 
+}
+
+ConductItem.propTypes = {
+    data: PropTypes.shape({
+        description: PropTypes.string,
+        title: PropTypes.string,
+    }).isRequired,
 }
 
 export default ConductItem;

@@ -13,5 +13,6 @@
  export const typography = {
     baseSize: 16,
     fontMain: 'Montserrat-Regular',
+    fontMainAnd: 'Montserrat',
     fontMainLight: 'Montserrat-Light'
  }

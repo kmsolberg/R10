@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, SectionList, View, TouchableOpacity } from 'react-native';
 import Moment from 'moment';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import { styles } from './styles';
 import { goToSession } from '../../lib/navigationHelpers';
 
 const Schedule = ({ sessionData }) => (
     <SectionList
+      style={styles.container}
       renderItem={({item}) => { 
         return (
           <TouchableOpacity onPress={() => goToSession('schedule', item)}>
