@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
     },
     aboutInfo: {
         margin: 10,
+        flexDirection: 'row',
     },
     aboutText: {
         marginTop: 10,

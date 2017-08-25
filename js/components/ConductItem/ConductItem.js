@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, TouchableOpacity, LayoutAnimation } from 'react-native';
+import { View, Text, TouchableOpacity, LayoutAnimation, Animated } from 'react-native';
 
 import { styles } from './styles';
 
@@ -8,22 +8,45 @@ class ConductItem extends Component {
         super()
 
         this.state = {
-            display: false
+            display: false,
+            spin: new Animated.Value(0),
         }
+    }
+
+    spinPlus = () => {
+        Animated.timing(
+            this.state.spin,
+            {
+                toValue: 1,
+                duration: 500
+            }
+        ).start();
     }
 
     onPress = () => {
         LayoutAnimation.easeInEaseOut();
-
+        this.spinPlus()
         this.setState({ display: !this.state.display })
     }
     
     render() {
+        let spinningPlus = this.state.spin.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['0deg', '360deg']
+        })
+
+        let animatedStyle = {
+            transform: [
+                { rotate: spinningPlus }
+            ]
+        }
+
         return (
             <View>
                 <TouchableOpacity onPress={this.onPress}>
-                    <View>
-                        <Text>{this.state.display ? '-' : '+'}</Text>
+                    <View style={styles.aboutInfo}>
+                        <Animated.Text style={[animatedStyle]}>{this.state.display ? '-' : '+'}
+                        </Animated.Text>
                         <Text style={styles.item}> {this.props.data.title}</Text>
                     </View>
                 </TouchableOpacity>
