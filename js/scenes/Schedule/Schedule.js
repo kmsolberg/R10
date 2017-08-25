@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, SectionList, View, TouchableOpacity, popSession } from 'react-native';
+import { Text, SectionList, View, TouchableOpacity } from 'react-native';
 import Moment from 'moment';
 
 import { styles } from './styles';

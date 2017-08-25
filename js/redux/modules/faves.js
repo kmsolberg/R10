@@ -1,40 +1,45 @@
+import { getFaves } from '../../config/models';
 import { formatSessionData } from '../../lib/helperFunctions';
 
-const LOAD_SESSIONS = 'LOAD_SESSIONS';
+const LOAD_FAVES = 'LOAD_FAVES';
 
-function loadSessions(sessionData) {
+function loadFaves(favesData) {
     return {
-        type: LOAD_SESSIONS,
-        payload: sessionData
+        type: LOAD_FAVES,
+        payload: favesData,
     }
 }
 
-export function fetchSessions() {
+export function fetchFaves() {
     return function(dispatch) {
         let endpoint = 'https://r10app-95fea.firebaseio.com/sessions.json';
+        let favesID = getFaves().map((fave) => fave.id)
         fetch(endpoint)
         .then(response => response.json())
+        data => data.filter(item => {
+            return item.session_id = favesID
+        })
         .then(data => formatSessionData(data))
         .then(data => {
-            dispatch(loadSessions(data));
+            dispatch(loadFaves(data));
         })
         .catch(error => console.log(`Error fetching JSON: ${error}`));
     }
 }
 
 const initialState = {
-    sessionData: [],
+    favesData: [],
     isLoading: true
 }
 
-export function sessionReducer(state = initialState, action) {
+export function favesReducer(state = initialState, action) {
     switch(action.type) {
-        case LOAD_SESSIONS:
+        case LOAD_FAVES:
             return {
                 isLoading: false,
-                sessionData: action.payload,
+                favesData: action.payload
             }
         default:
-            return state;
+            return state
     }
 }

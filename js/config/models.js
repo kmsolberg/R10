@@ -11,8 +11,6 @@ const Fave = {
 
 const realm = new Realm({schema: [Fave]})
 
-console.log('path', realm.path)
-
 export const addFave = (faveID) => {
     realm.write(() => {
         realm.create('Fave', {id: faveID, faved_on: new Date()})
@@ -28,9 +26,8 @@ export const removeFave = (faveID) => {
 }
 
 export const getFaves = () => {
-    realm.write(() => {
-        realm.objects('Fave')
-    })
+    let faves = realm.objects('Fave')
+    return faves;
 }
 
 export default realm;

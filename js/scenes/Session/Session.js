@@ -7,7 +7,7 @@ import { colors } from '../../config/styles'
 import { addFave } from '../../config/models';
 import { realm } from '../../config/models';
 
-const Session = ({sessionData}) => (
+const Session = ({ sessionData }) => (
     <View>
         <Text>
             {sessionData.description}
@@ -22,7 +22,17 @@ const Session = ({sessionData}) => (
 );
 
 Session.propTypes = {
-
+    sessionData: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.number,
+        object: PropTypes.shape({
+            description: PropTypes.string,
+            location: PropTypes.string,
+            session_id: PropTypes.string,
+            speaker: PropTypes.string,
+            start_time: PropTypes.number,
+            title: PropTypes.string,
+        }),
+    })).isRequired
 };
 
 export default Session;
