@@ -15,7 +15,10 @@ const Schedule = ({ sessionData }) => (
           <TouchableOpacity onPress={() => goToSession('schedule', item)}>
             <View>
               <Text style={styles.itemTitle}>{item.title}</Text>
-              <Text style={styles.itemLocation}>{item.location}</Text>
+              <View style={styles.locationInfo }>
+                <Text style={styles.itemLocation}>{item.location}</Text>
+                <Icon name={"ios-heart"} color="red" />
+              </View>
             </View>
           </TouchableOpacity>
         )}

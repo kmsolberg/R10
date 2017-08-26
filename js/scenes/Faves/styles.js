@@ -26,5 +26,10 @@ export const styles = StyleSheet.create({
         height: StyleSheet.hairlineWidth,
         backgroundColor: colors.lightGrey,
       },
+    location: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginRight: 10,
+    },
 });
 

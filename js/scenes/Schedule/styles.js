@@ -34,6 +34,11 @@ export const styles = StyleSheet.create({
               fontFamily: typography.fontMainAnd,
             },
           }),
-    }
+    },
+    locationInfo: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginRight: 10,
+    },
 });
 
