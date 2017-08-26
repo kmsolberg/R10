@@ -4,8 +4,9 @@ import {
     TabNavigation,
     TabNavigationItem as TabItem,
   } from '@expo/ex-navigation';
-import { Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient';
 
 import { Router } from './routes';
 
@@ -16,7 +17,11 @@ const defaultRouteConfig = {
         tintColor: 'blue'
     },
     // renderBackground: () => (
-    //     // returning some component for the background...
+    //     <LinearGradient
+    //         start={{ x: 0.0, y: 1.0 }} end={{ x: 1.0, y: 1.0 }}
+    //         colors={[colors.red, colors.purple]}
+    //         style={StyleSheet.absoluteFill}
+    //   />
     // );
 }
 
@@ -95,7 +100,12 @@ class NavigationLayout extends Component {
         }
         return <Text style={titles}>{title}</Text>
     }
-
 }
+
+const styles = StyleSheet.create({
+    absoluteFill: {
+        
+    }
+})
 
 export default NavigationLayout;

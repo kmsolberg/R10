@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, Image, FlatList, LayoutAnimation, TouchableOpacity } from 'react-native';
+import { Text, View, Image, FlatList, ScrollView } from 'react-native';
 
 import { styles } from './styles';
 import ConductItem from '../../components/ConductItem/';
 
 const About = ({ data }) => (
-
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
         <View style={styles.logoContainer}>
             <Image 
                 source={require('../../assets/images/r10_logo.png')}
@@ -28,7 +27,8 @@ const About = ({ data }) => (
             }
             keyExtractor={(item, index) => index}
         />
-    </View>
+        <Text>&copy; RED Academy 2017</Text>
+gi    </ScrollView>
 );
 
 About.propTypes = {
