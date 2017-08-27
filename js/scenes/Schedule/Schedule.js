@@ -6,6 +6,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import { styles } from './styles';
 import { goToSession } from '../../lib/navigationHelpers';
+import { getFaves } from '../../config/models';
+
+const faves = getFaves()
 
 const Schedule = ({ sessionData }) => (
     <SectionList
@@ -17,7 +20,9 @@ const Schedule = ({ sessionData }) => (
               <Text style={styles.itemTitle}>{item.title}</Text>
               <View style={styles.locationInfo }>
                 <Text style={styles.itemLocation}>{item.location}</Text>
-                <Icon name={"ios-heart"} color="red" />
+                {faves.find(el => item.session_id === el.id) &&
+                  <Icon name={"ios-heart"} color="red" />
+                }
               </View>
             </View>
           </TouchableOpacity>
