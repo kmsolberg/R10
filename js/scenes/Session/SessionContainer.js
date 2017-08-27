@@ -4,6 +4,7 @@ import { ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Session from './Session';
+import { fetchSpeakers } from '../../redux/modules/speakers';
 
 class SessionContainer extends Component {
 
@@ -13,13 +14,17 @@ class SessionContainer extends Component {
         }
     };
 
+    componentDidMount() {
+        this.props.dispatch(fetchSpeakers(this.props.sessionData.speaker))
+    }
+
     render() {
         if (this.props.isLoading) {
             return (
                 <ActivityIndicator animating={true} size="small" color="black" />
             );
         } else {
-            return <Session sessionData={this.props.sessionData} />;
+            return <Session sessionData={this.props.sessionData} speakerData={this.props.speakerData} />;
         }
     }
 }
@@ -27,7 +32,7 @@ class SessionContainer extends Component {
 SessionContainer.propTypes = {
     dispatch: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
-    sessionData: PropTypes.arrayOf(PropTypes.shape({
+    sessionData: PropTypes.objectOf(PropTypes.shape({
         title: PropTypes.number,
         object: PropTypes.shape({
             description: PropTypes.string,
@@ -37,7 +42,23 @@ SessionContainer.propTypes = {
             start_time: PropTypes.number,
             title: PropTypes.string,
         }),
-    })).isRequired
+    })).isRequired,
+    speakerData: PropTypes.objectOf(
+        PropTypes.shape({
+            bio: PropTypes.string,
+            image: PropTypes.string,
+            name: PropTypes.string,
+            session: PropTypes.string,
+            speaker_id: PropTypes.string,
+            url: PropTypes.string,
+        })
+    ).isRequired
 }
 
-export default (SessionContainer);
+function mapStateToProps(state) {
+    return {
+        isLoading: state.speakers.isLoading,
+        speakerData: state.speakers.speakerData
+    }
+}
+export default connect(mapStateToProps)(SessionContainer);

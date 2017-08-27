@@ -10,23 +10,23 @@ export const styles = StyleSheet.create({
         fontSize: 12,
         ...Platform.select({
             ios: {
-              fontFamily: typography.fontMain,
+                fontFamily: typography.fontMain,
             },
             android: {
-              fontFamily: typography.fontMainAnd,
+                fontFamily: typography.fontMainAnd,
             },
-          }),
+        }),
     },
     itemTitle: {
         margin: 10,
         ...Platform.select({
             ios: {
-              fontFamily: typography.fontMain,
+                fontFamily: typography.fontMain,
             },
             android: {
-              fontFamily: typography.fontMainAnd,
+                fontFamily: typography.fontMainAnd,
             },
-          }),
+        }),
     },
     itemLocation: {
         color: colors.mediumGrey,
@@ -35,18 +35,18 @@ export const styles = StyleSheet.create({
         fontSize: 12,
         ...Platform.select({
             ios: {
-              fontFamily: typography.fontMain,
+                fontFamily: typography.fontMain,
             },
             android: {
-              fontFamily: typography.fontMainAnd,
+                fontFamily: typography.fontMainAnd,
             },
-          }),
+        }),
     },
     border: {
         flex: 1,
         height: StyleSheet.hairlineWidth,
         backgroundColor: colors.lightGrey,
-      },
+    },
     container: {
         flex: 1,
     },

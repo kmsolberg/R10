@@ -36,6 +36,7 @@ export function favesReducer(state = initialState, action) {
     switch(action.type) {
         case LOAD_FAVES:
             return {
+                ...state,
                 isLoading: false,
                 favesData: action.payload
             }
