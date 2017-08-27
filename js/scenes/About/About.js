@@ -27,8 +27,8 @@ const About = ({ data }) => (
             }
             keyExtractor={(item, index) => index}
         />
-        <Text>&copy; RED Academy 2017</Text>
-gi    </ScrollView>
+        <Text style={styles.copyright}>&copy; RED Academy 2017</Text>
+    </ScrollView>
 );
 
 About.propTypes = {

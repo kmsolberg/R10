@@ -5,14 +5,6 @@ import { typography, colors } from '../../config/styles';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        ...Platform.select({
-            ios: {
-              fontFamily: typography.fontMain,
-            },
-            android: {
-              fontFamily: typography.fontMainAnd,
-            },
-          }),
     },
 
     logoContainer: {
@@ -35,11 +27,33 @@ export const styles = StyleSheet.create({
     aboutText: {
         marginTop: 10,
         marginBottom: 10,
+        ...Platform.select({
+            ios: {
+              fontFamily: typography.fontMain,
+            },
+            android: {
+              fontFamily: typography.fontMainAnd,
+            },
+          }),
     },
     aboutHeader: {
         fontWeight: 'bold',
+        ...Platform.select({
+            ios: {
+              fontFamily: typography.fontMain,
+            },
+            android: {
+              fontFamily: typography.fontMainAnd,
+            },
+          }),
     },
     list: {
         margin: 10,
+        borderBottomWidth: 1,
+        borderColor: colors.lightGrey,
+    },
+    copyright: {
+        margin: 10,
+        marginBottom: 15,
     },
 });
