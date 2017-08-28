@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Session from './Session';
 import { fetchSpeakers } from '../../redux/modules/speakers';
 import { fetchFaveIds } from '../../redux/modules/faves';
+import { findFave } from '../../lib/helperFunctions';
 
 class SessionContainer extends Component {
 
@@ -19,19 +20,9 @@ class SessionContainer extends Component {
         this.props.dispatch(fetchSpeakers(this.props.sessionData.speaker))
         this.props.dispatch(fetchFaveIds())
     }
-    
-    findFave() {
-        let isFave = false;
-        const faves = this.props.faveIds;
-
-        if(faves.find(el => this.props.sessionData.session_id === el.id)) {
-            isFave = true
-        }
-        return isFave
-    }
 
     render() {
-        const faves = this.findFave();
+        const faves = findFave(this.props.faveIds, this.props.sessionData);
 
         if (this.props.isLoading) {
             return (

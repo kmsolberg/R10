@@ -46,7 +46,7 @@ Schedule.propTypes = {
             start_time: PropTypes.number,
             title: PropTypes.string,
         }),
-    })).isRequired
+    })).isRequired,
 }
 
 export default Schedule;

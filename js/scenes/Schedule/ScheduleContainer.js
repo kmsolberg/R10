@@ -30,7 +30,10 @@ class ScheduleContainer extends Component {
             );
         } else {
             return (
-                <Schedule sessionData={this.props.data} favesData={this.props.faves}/>
+                <Schedule 
+                    sessionData={this.props.data}
+                    favesData={this.props.faves}
+                />
             )
         }
     }
@@ -56,7 +59,7 @@ function mapStateToProps(state) {
     return {
         isLoading: state.session.isLoading,
         data: state.session.sessionData,
-        faves: state.faves.favesData,
+        faves: state.faves.favesID,
     }
 }
 export default connect(mapStateToProps)(ScheduleContainer);
