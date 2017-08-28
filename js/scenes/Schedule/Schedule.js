@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, SectionList, View, TouchableOpacity } from 'react-native';
+import { Text, SectionList, View, TouchableOpacity, Platform } from 'react-native';
 import Moment from 'moment';
 import Icon from 'react-native-vector-icons/Ionicons';
 

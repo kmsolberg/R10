@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, TouchableOpacity, SectionList } from 'react-native';
+import { Text, View, TouchableOpacity, SectionList, Platform } from 'react-native';
 import Moment from 'moment';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -16,7 +16,12 @@ const Faves = ({ favesData }) => (
             <Text style={styles.itemTitle}>{item.title}</Text>
             <View style={styles.location}>
               <Text style={styles.itemLocation}>{item.location}</Text>
-              <Icon name={"ios-heart"} color="red" />
+              {Platform.OS === 'ios' &&
+                <Icon name={"ios-heart"} color="red" />
+              }
+              {Platform.Version === 24 &&
+                <Icon name={"md-heart"} color="red" />
+              }
             </View>
           </View>
         </TouchableOpacity>

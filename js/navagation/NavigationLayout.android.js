@@ -13,7 +13,8 @@ import { colors, typography } from '../config/styles';
 
 const defaultRouteConfig = {
     navigationBar: {
-        tintColor: 'blue'
+        backgroundColor: colors.purple,
+        tintColor: 'white',
     },
     // renderBackground: () => (
     //     // returning some component for the background...
