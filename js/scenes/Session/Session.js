@@ -35,20 +35,22 @@ const Session = ({ sessionData, speakerData, isFave }) => (
                 <Text style={styles.speakerName}>{speakerData.name}</Text>
             </View>
         </TouchableOpacity>
-        {isFave ? (
-            <TouchableOpacity onPress={() => removeFave(sessionData.session_id)}>
-                <CustomButton
-                    title={deleteButton}
-                />
-            </TouchableOpacity>
-        ) : (
-                <TouchableOpacity onPress={() => addFave(sessionData.session_id)}>
+        <View style={styles.buttonContainer}>
+            {isFave ? (
+                <TouchableOpacity onPress={() => removeFave(sessionData.session_id)}>
                     <CustomButton
-                        title={addButton}
+                        title={deleteButton}
                     />
                 </TouchableOpacity>
-            )
-        }
+            ) : (
+                    <TouchableOpacity onPress={() => addFave(sessionData.session_id)}>
+                        <CustomButton
+                            title={addButton}
+                        />
+                    </TouchableOpacity>
+                )
+            }
+        </View>
     </ScrollView>
 );
 

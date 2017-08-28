@@ -87,5 +87,10 @@ export const styles = StyleSheet.create({
             },
         }),
         paddingLeft: 10,
-    }
+    },
+    buttonContainer: {
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });
