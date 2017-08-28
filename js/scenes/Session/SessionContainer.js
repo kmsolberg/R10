@@ -39,7 +39,6 @@ class SessionContainer extends Component {
             return <Session 
                 sessionData={this.props.sessionData}
                 speakerData={this.props.speakerData}
-                //favesData={this.props.favesData}
                 isFave={faves}
             />;
         }

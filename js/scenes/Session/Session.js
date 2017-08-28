@@ -72,6 +72,7 @@ Session.propTypes = {
         speaker_id: PropTypes.string,
         url: PropTypes.string,
     }).isRequired,
+    isFave: PropTypes.bool.isRequired,
 };
 
 export default Session;
