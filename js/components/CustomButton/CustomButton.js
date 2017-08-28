@@ -4,17 +4,15 @@ import { Text, View, TouchableOpacity } from 'react-native';
 
 import { styles } from './styles';
 
-const CustomButton = ({ title, onPress }) => (
-        <TouchableOpacity onPress={onPress} style={styles.container}>
-            <View style={styles.button}>
-                <Text style={styles.buttonText}>{title}</Text>
-            </View>
-        </TouchableOpacity>
+const CustomButton = ({ title }) => (
+    <View style={styles.button}>
+        <Text style={styles.buttonText}>{title}</Text>
+    </View>
 );
 
 CustomButton.propTypes = {
     title: PropTypes.string.isRequired,
-    onPress: PropTypes.func.isRequired,
+    faveFunc: PropTypes.func.isRequired,
 }
 
 export default CustomButton;

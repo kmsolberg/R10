@@ -9,14 +9,13 @@ import { colors } from '../../config/styles';
 import CustomButton from '../../components/CustomButton/index';
 import { addFave, getFaves } from '../../config/models';
 
-const faves = getFaves()
 const buttonTitle = 'Add to Faves'
 
-const Session = ({ sessionData, speakerData }) => (
+const Session = ({ sessionData, speakerData, favesData }) => (
     <ScrollView style={styles.container}>
         <View style={styles.sessionLocation}>
             <Text style={styles.greyText}>{sessionData.location}</Text>
-            {faves.find(el => sessionData.session_id === el.id) &&
+            {favesData.find(el => sessionData.session_id === el.id) &&
                 <Icon name={"ios-heart"} color="red" />
             }
         </View>
@@ -33,10 +32,12 @@ const Session = ({ sessionData, speakerData }) => (
                 <Text style={styles.speakerName}>{speakerData.name}</Text>
             </View>
         </TouchableOpacity>
-        <CustomButton
-            title={buttonTitle}
-            // onPress={addFave(sessionData.session_id)}
-        />
+        <TouchableOpacity onPress={() => addFave(sessionData.session_id)}>
+                <CustomButton
+                    title={buttonTitle}
+                    onPress={() => addFave(sessionData.session_id)}
+                />
+        </TouchableOpacity>
     </ScrollView>
 );
 

@@ -4,7 +4,9 @@ import { ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 
 import { fetchSessions } from '../../redux/modules/sessions';
+import { fetchFaveIds } from '../../redux/modules/faves';
 import Schedule from './Schedule';
+import realm from '../../config/models';
 
 class ScheduleContainer extends Component {
 
@@ -16,16 +18,19 @@ class ScheduleContainer extends Component {
 
     componentDidMount() {
         this.props.dispatch(fetchSessions())
+        this.props.dispatch(fetchFaveIds())
+        realm.addListener('change', () => this.props.dispatch(fetchFaveIds()));
     }
 
     render() {
+        
         if (this.props.isLoading) {
             return (
              <ActivityIndicator animating={true} size="small" color="black" />
             );
         } else {
             return (
-                <Schedule sessionData={this.props.data} />
+                <Schedule sessionData={this.props.data} favesData={this.props.faves}/>
             )
         }
     }
@@ -51,6 +56,7 @@ function mapStateToProps(state) {
     return {
         isLoading: state.session.isLoading,
         data: state.session.sessionData,
+        faves: state.faves.favesData,
     }
 }
 export default connect(mapStateToProps)(ScheduleContainer);

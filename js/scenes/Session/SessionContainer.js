@@ -24,7 +24,11 @@ class SessionContainer extends Component {
                 <ActivityIndicator animating={true} size="small" color="black" />
             );
         } else {
-            return <Session sessionData={this.props.sessionData} speakerData={this.props.speakerData} />;
+            return <Session 
+                sessionData={this.props.sessionData}
+                speakerData={this.props.speakerData}
+                favesData={this.props.favesData}
+            />;
         }
     }
 }
@@ -58,7 +62,8 @@ SessionContainer.propTypes = {
 function mapStateToProps(state) {
     return {
         isLoading: state.speakers.isLoading,
-        speakerData: state.speakers.speakerData
+        speakerData: state.speakers.speakerData,
+        favesData: state.faves.favesData,
     }
 }
 export default connect(mapStateToProps)(SessionContainer);

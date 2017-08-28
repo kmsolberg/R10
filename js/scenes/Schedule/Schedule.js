@@ -8,9 +8,7 @@ import { styles } from './styles';
 import { goToSession } from '../../lib/navigationHelpers';
 import { getFaves } from '../../config/models';
 
-const faves = getFaves()
-
-const Schedule = ({ sessionData }) => (
+const Schedule = ({ sessionData, favesData }) => (
     <SectionList
       style={styles.container}
       renderItem={({item}) => { 
@@ -20,7 +18,7 @@ const Schedule = ({ sessionData }) => (
               <Text style={styles.itemTitle}>{item.title}</Text>
               <View style={styles.locationInfo }>
                 <Text style={styles.itemLocation}>{item.location}</Text>
-                {faves.find(el => item.session_id === el.id) &&
+                {favesData.find(el => item.session_id === el.id) &&
                   <Icon name={"ios-heart"} color="red" />
                 }
               </View>

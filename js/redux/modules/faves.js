@@ -27,6 +27,13 @@ export function fetchFaves() {
     }
 }
 
+export function fetchFaveIds() {
+    return function(dispatch) {
+        let favesID = getFaves()
+        dispatch(loadFaves(favesID))
+    }
+}
+
 const initialState = {
     favesData: [],
     isLoading: true
