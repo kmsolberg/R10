@@ -8,6 +8,16 @@ import { fetchSpeakers } from '../../redux/modules/speakers';
 
 class SessionContainer extends Component {
 
+    findFave() {
+        let isFave = false;
+        const faves = this.props.favesData;
+
+        if(faves.find(el => this.props.sessionData.session_id === el.id)) {
+            isFave = true
+        }
+        return isFave
+    }
+
     static route = {
         navigationBar: {
             title: 'Session',
@@ -19,6 +29,8 @@ class SessionContainer extends Component {
     }
     
     render() {
+        const faves = this.findFave();
+
         if (this.props.isLoading) {
             return (
                 <ActivityIndicator animating={true} size="small" color="black" />
@@ -27,7 +39,8 @@ class SessionContainer extends Component {
             return <Session 
                 sessionData={this.props.sessionData}
                 speakerData={this.props.speakerData}
-                favesData={this.props.favesData}
+                //favesData={this.props.favesData}
+                isFave={faves}
             />;
         }
     }

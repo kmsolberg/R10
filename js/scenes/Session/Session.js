@@ -11,14 +11,14 @@ import { addFave, removeFave } from '../../config/models';
 import { goToSpeaker } from '../../lib/navigationHelpers';
 
 const addButton = 'Add to Faves'
-const deleteButton ="Remove from Faves"
+const deleteButton = "Remove from Faves"
 
-const Session = ({ sessionData, speakerData, favesData }) => (
-    
+const Session = ({ sessionData, speakerData, isFave }) => (
+
     <ScrollView style={styles.container}>
         <View style={styles.sessionLocation}>
             <Text style={styles.greyText}>{sessionData.location}</Text>
-            {favesData.find(el => sessionData.session_id === el.id) &&
+            {isFave &&
                 <Icon name={"ios-heart"} color={colors.red} />
             }
         </View>
@@ -30,17 +30,24 @@ const Session = ({ sessionData, speakerData, favesData }) => (
             <View style={styles.speaker}>
                 <Image
                     style={styles.speakerPic}
-                    source={{uri: speakerData.image}}
+                    source={{ uri: speakerData.image }}
                 />
                 <Text style={styles.speakerName}>{speakerData.name}</Text>
             </View>
         </TouchableOpacity>
-        {favesData.find(el => sessionData.session_id === el.id) &&
+        {isFave ? (
             <TouchableOpacity onPress={() => removeFave(sessionData.session_id)}>
                 <CustomButton
                     title={deleteButton}
                 />
             </TouchableOpacity>
+        ) : (
+                <TouchableOpacity onPress={() => addFave(sessionData.session_id)}>
+                    <CustomButton
+                        title={addButton}
+                    />
+                </TouchableOpacity>
+            )
         }
     </ScrollView>
 );
