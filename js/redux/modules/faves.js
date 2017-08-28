@@ -2,11 +2,19 @@ import { getFaves } from '../../config/models';
 import { formatSessionData } from '../../lib/helperFunctions';
 
 const LOAD_FAVES = 'LOAD_FAVES';
+const LOAD_IDS = 'LOAD_IDS';
 
 function loadFaves(favesData) {
     return {
         type: LOAD_FAVES,
         payload: favesData,
+    }
+}
+
+function loadIDs(favesID) {
+    return {
+        type: LOAD_IDS,
+        payload: favesID,
     }
 }
 
@@ -30,12 +38,13 @@ export function fetchFaves() {
 export function fetchFaveIds() {
     return function(dispatch) {
         let favesID = getFaves()
-        dispatch(loadFaves(favesID))
+        dispatch(loadIDs(favesID))
     }
 }
 
 const initialState = {
     favesData: [],
+    favesID: [],
     isLoading: true
 }
 
@@ -46,6 +55,11 @@ export function favesReducer(state = initialState, action) {
                 ...state,
                 isLoading: false,
                 favesData: action.payload
+            }
+        case LOAD_IDS:
+            return {
+                ...state,
+                favesID: action.payload
             }
         default:
             return state

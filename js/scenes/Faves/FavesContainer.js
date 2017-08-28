@@ -4,8 +4,9 @@ import { ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 
 import Faves from './Faves';
-import { fetchFaves } from '../../redux/modules/faves';
+import { fetchFaves, fetchFaveIds } from '../../redux/modules/faves';
 
+import realm from '../../config/models';
 class FavesContainer extends Component {
 
     static route = {
@@ -16,6 +17,7 @@ class FavesContainer extends Component {
 
     componentDidMount() {
         this.props.dispatch(fetchFaves())
+        realm.addListener('change', () => this.props.dispatch(fetchFaves()));
     }
 
     render() {

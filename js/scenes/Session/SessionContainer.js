@@ -5,18 +5,9 @@ import PropTypes from 'prop-types';
 
 import Session from './Session';
 import { fetchSpeakers } from '../../redux/modules/speakers';
+import { fetchFaveIds } from '../../redux/modules/faves';
 
 class SessionContainer extends Component {
-
-    findFave() {
-        let isFave = false;
-        const faves = this.props.favesData;
-
-        if(faves.find(el => this.props.sessionData.session_id === el.id)) {
-            isFave = true
-        }
-        return isFave
-    }
 
     static route = {
         navigationBar: {
@@ -26,8 +17,19 @@ class SessionContainer extends Component {
 
     componentDidMount() {
         this.props.dispatch(fetchSpeakers(this.props.sessionData.speaker))
+        this.props.dispatch(fetchFaveIds())
     }
     
+    findFave() {
+        let isFave = false;
+        const faves = this.props.faveIds;
+
+        if(faves.find(el => this.props.sessionData.session_id === el.id)) {
+            isFave = true
+        }
+        return isFave
+    }
+
     render() {
         const faves = this.findFave();
 
@@ -76,6 +78,7 @@ function mapStateToProps(state) {
         isLoading: state.speakers.isLoading,
         speakerData: state.speakers.speakerData,
         favesData: state.faves.favesData,
+        faveIds: state.faves.favesID,
     }
 }
 export default connect(mapStateToProps)(SessionContainer);
