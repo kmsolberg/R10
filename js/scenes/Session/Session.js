@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, Button, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import Moment from 'moment';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { styles } from './styles';
-import { colors } from '../../config/styles'
+import { colors } from '../../config/styles';
+import CustomButton from '../../components/CustomButton/index';
 import { addFave, getFaves } from '../../config/models';
 
 const faves = getFaves()
+const buttonTitle = 'Add to Faves'
 
 const Session = ({ sessionData, speakerData }) => (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
         <View style={styles.sessionLocation}>
             <Text style={styles.greyText}>{sessionData.location}</Text>
             {faves.find(el => sessionData.session_id === el.id) &&
@@ -31,13 +33,11 @@ const Session = ({ sessionData, speakerData }) => (
                 <Text style={styles.speakerName}>{speakerData.name}</Text>
             </View>
         </TouchableOpacity>
-        <Button
-            //onPress={addFave(sessionData.session_id)}
-            title="Add to Faves"
-            color={colors.purple}
-            accessibilityLabel="Add to your favourites"
+        <CustomButton
+            title={buttonTitle}
+            // onPress={addFave(sessionData.session_id)}
         />
-    </View>
+    </ScrollView>
 );
 
 Session.propTypes = {
