@@ -11,7 +11,7 @@ const Faves = ({ favesData }) => (
   <SectionList
     renderItem={({ item }) => {
       return (
-        <TouchableOpacity onPress={() => goToSession('schedule', item)}>
+        <TouchableOpacity onPress={() => goToSession('faves', item)}>
           <View>
             <Text style={styles.itemTitle}>{item.title}</Text>
             <View style={styles.location}>

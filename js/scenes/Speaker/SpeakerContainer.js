@@ -7,7 +7,7 @@ class SpeakerContainer extends Component {
 
     static route = {
         navigationBar: {
-          title: 'Speaker',
+            visible: false
         }
     };
     
@@ -16,7 +16,7 @@ class SpeakerContainer extends Component {
     };
 
     render() {
-        return <Speaker />;
+        return <Speaker speakerData={this.props.speakerData}/>;
     }
 }
 

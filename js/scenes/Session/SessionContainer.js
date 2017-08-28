@@ -17,7 +17,7 @@ class SessionContainer extends Component {
     componentDidMount() {
         this.props.dispatch(fetchSpeakers(this.props.sessionData.speaker))
     }
-
+    
     render() {
         if (this.props.isLoading) {
             return (

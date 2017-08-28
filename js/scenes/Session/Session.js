@@ -7,23 +7,26 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { styles } from './styles';
 import { colors } from '../../config/styles';
 import CustomButton from '../../components/CustomButton/index';
-import { addFave, getFaves } from '../../config/models';
+import { addFave, removeFave } from '../../config/models';
+import { goToSpeaker } from '../../lib/navigationHelpers';
 
-const buttonTitle = 'Add to Faves'
+const addButton = 'Add to Faves'
+const deleteButton ="Remove from Faves"
 
 const Session = ({ sessionData, speakerData, favesData }) => (
+    
     <ScrollView style={styles.container}>
         <View style={styles.sessionLocation}>
             <Text style={styles.greyText}>{sessionData.location}</Text>
             {favesData.find(el => sessionData.session_id === el.id) &&
-                <Icon name={"ios-heart"} color="red" />
+                <Icon name={"ios-heart"} color={colors.red} />
             }
         </View>
         <Text style={styles.sessionTitle}>{sessionData.title}</Text>
         <Text style={styles.time}>{Moment.unix(sessionData.start_time).format('h:mm A')}</Text>
         <Text style={styles.description}>{sessionData.description}</Text>
         <Text style={styles.greyText}>Presented by:</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => goToSpeaker(speakerData)}>
             <View style={styles.speaker}>
                 <Image
                     style={styles.speakerPic}
@@ -32,12 +35,13 @@ const Session = ({ sessionData, speakerData, favesData }) => (
                 <Text style={styles.speakerName}>{speakerData.name}</Text>
             </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => addFave(sessionData.session_id)}>
+        {favesData.find(el => sessionData.session_id === el.id) &&
+            <TouchableOpacity onPress={() => removeFave(sessionData.session_id)}>
                 <CustomButton
-                    title={buttonTitle}
-                    onPress={() => addFave(sessionData.session_id)}
+                    title={deleteButton}
                 />
-        </TouchableOpacity>
+            </TouchableOpacity>
+        }
     </ScrollView>
 );
 
@@ -53,7 +57,7 @@ Session.propTypes = {
             title: PropTypes.string,
         }),
     })).isRequired,
-    speakerData: PropTypes.objectOf({
+    speakerData: PropTypes.shape({
         bio: PropTypes.string,
         image: PropTypes.string,
         name: PropTypes.string,

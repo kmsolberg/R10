@@ -18,7 +18,7 @@ export const addFave = (faveID) => {
 }
 
 export const removeFave = (faveID) => {
-    let fave = realm.objects('Fave').filtered({id: faveID})
+    let fave = realm.objects('Fave').filtered({id: `${faveID}`})
     
     realm.write(() => {
         realm.delete(fave)

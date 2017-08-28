@@ -22,11 +22,10 @@ export default class R10 extends Component {
         <NavigationProvider context={navigationContext}>
           <StatusBar barStyle="light-content" />
           <StackNavigation 
-            navigationUID="root" 
-            id="root" 
+            navigatorUID="root"
             initialRoute={Router.getRoute('navigationBar')} 
             defaultRouteConfig={{
-              styles: { ...NavigationStyles.SlideVertical, }
+              styles: { ...NavigationStyles.SlideVertical }
             }}
           />
         </NavigationProvider>
