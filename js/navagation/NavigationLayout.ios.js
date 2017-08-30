@@ -3,7 +3,7 @@ import {
     StackNavigation,
     TabNavigation,
     TabNavigationItem as TabItem,
-  } from '@expo/ex-navigation';
+} from '@expo/ex-navigation';
 import { Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -16,23 +16,25 @@ const defaultRouteConfig = {
     navigationBar: {
         backgroundColor: colors.purple,
         tintColor: 'white',
+        renderBackground: () => {
+            return (
+                <LinearGradient
+                    start={{ x: 0.0, y: 1.0 }} end={{ x: 1.0, y: 1.0 }}
+                    colors={[colors.red, colors.purple]}
+                    style={StyleSheet.absoluteFill}
+                />
+            )
+        }
     },
-    // renderBackground: () => (
-    //     <LinearGradient
-    //         start={{ x: 0.0, y: 1.0 }} end={{ x: 1.0, y: 1.0 }}
-    //         colors={[colors.red, colors.purple]}
-    //         style={StyleSheet.absoluteFill}
-    //   />
-    // );
 }
 
 class NavigationLayout extends Component {
 
     static route = {
         navigationBar: {
-          visible: false,
+            visible: false,
         }
-      }
+    }
 
     render() {
         return (
@@ -105,7 +107,7 @@ class NavigationLayout extends Component {
 
 const styles = StyleSheet.create({
     absoluteFill: {
-        
+
     }
 })
 
