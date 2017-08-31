@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
-import { colors } from '../../config/styles';
+import { colors, typography } from '../../config/styles';
 
 export const styles = StyleSheet.create({
     aboutInfo: {
@@ -8,6 +8,10 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     itemTitle: {
-        color: colors.purple
-    }
+        color: colors.purple,
+        fontFamily: typography.fontMainLight,
+    },
+    item: {
+        fontFamily: typography.fontMainLight,
+    },
 });

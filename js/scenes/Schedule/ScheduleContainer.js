@@ -32,7 +32,7 @@ class ScheduleContainer extends Component {
             return (
                 <Schedule 
                     sessionData={this.props.data}
-                    favesData={this.props.faves}
+                    favesData={this.props.faves} 
                 />
             )
         }

@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
         ...Platform.select({
             ios: {
-              fontFamily: typography.fontMain,
+              fontFamily: typography.fontMainLight,
             },
             android: {
               fontFamily: typography.fontMainAnd,
@@ -37,7 +37,6 @@ export const styles = StyleSheet.create({
           }),
     },
     aboutHeader: {
-        fontWeight: 'bold',
         ...Platform.select({
             ios: {
               fontFamily: typography.fontMain,
@@ -46,6 +45,7 @@ export const styles = StyleSheet.create({
               fontFamily: typography.fontMainAnd,
             },
           }),
+        fontSize: 24,
     },
     list: {
         margin: 10,

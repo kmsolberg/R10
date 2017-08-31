@@ -1,4 +1,5 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet, Platform,   Dimensions,
+} from 'react-native';
 
 import { colors, typography } from '../../config/styles';
 
@@ -9,13 +10,23 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    button: {
+    buttonContainer: {
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.purple,
+        width: (Dimensions.get('window').width),
+        height: 200,
+    },
+    button: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 75,
         height: 40,
-        borderRadius: 40,
-        padding: 20,
+        borderRadius: 20,
+        marginTop: 20,
+        // padding: 20,
+        width: 180,
     },
     buttonText: {
         color: 'white',
@@ -27,5 +38,7 @@ export const styles = StyleSheet.create({
                 fontFamily: typography.fontMainAnd,
             },
         }),
+        backgroundColor: 'transparent',
+        margin: 10,
     }
 })
