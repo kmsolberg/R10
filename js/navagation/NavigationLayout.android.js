@@ -41,10 +41,10 @@ class NavigationLayout extends Component {
                     renderTitle={isSelected => this.renderTitle('Schedule', isSelected)}
                     renderIcon={(isSelected) => this.renderIcon("md-calendar", isSelected)}
                     style={styles.drawer}
-
                 >
                     <StackNavigation
                         id='schedule'
+                        navigatorUID="schedule"
                         initialRoute={Router.getRoute('schedule')}
                         defaultRouteConfig={defaultRouteConfig}
                     />
@@ -58,6 +58,7 @@ class NavigationLayout extends Component {
                 >
                     <StackNavigation
                         id='faves'
+                        navigatorUID="faves"
                         initialRoute={Router.getRoute('faves')}
                         defaultRouteConfig={defaultRouteConfig}
                     />

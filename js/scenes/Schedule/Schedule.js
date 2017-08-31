@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import { styles } from './styles';
 import { goToSession } from '../../lib/navigationHelpers';
-import { getFaves } from '../../config/models';
 
 const Schedule = ({ sessionData, favesData }) => (
     <SectionList
