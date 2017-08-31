@@ -29,7 +29,7 @@ class SessionContainer extends Component {
                 <ActivityIndicator animating={true} size="small" color="black" />
             );
         } else {
-            return <Session 
+            return <Session
                 sessionData={this.props.sessionData}
                 speakerData={this.props.speakerData}
                 isFave={faves}
@@ -41,27 +41,26 @@ class SessionContainer extends Component {
 SessionContainer.propTypes = {
     dispatch: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
-    sessionData: PropTypes.objectOf(PropTypes.shape({
-        title: PropTypes.number,
-        object: PropTypes.shape({
-            description: PropTypes.string,
-            location: PropTypes.string,
-            session_id: PropTypes.string,
-            speaker: PropTypes.string,
-            start_time: PropTypes.number,
-            title: PropTypes.string,
-        }),
+    sessionData: PropTypes.shape({
+        description: PropTypes.string,
+        location: PropTypes.string,
+        session_id: PropTypes.string,
+        speaker: PropTypes.string,
+        start_time: PropTypes.number,
+        title: PropTypes.string,
+    }).isRequired,
+    speakerData: PropTypes.shape({
+        bio: PropTypes.string,
+        image: PropTypes.string,
+        name: PropTypes.string,
+        session: PropTypes.string,
+        speaker_id: PropTypes.string,
+        url: PropTypes.string,
+    }).isRequired,
+    faveIds: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string,
+        faved_on: PropTypes.date,
     })).isRequired,
-    speakerData: PropTypes.objectOf(
-        PropTypes.shape({
-            bio: PropTypes.string,
-            image: PropTypes.string,
-            name: PropTypes.string,
-            session: PropTypes.string,
-            speaker_id: PropTypes.string,
-            url: PropTypes.string,
-        })
-    ).isRequired
 }
 
 function mapStateToProps(state) {

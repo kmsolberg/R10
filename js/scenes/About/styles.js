@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
               fontFamily: typography.fontMainAnd,
             },
           }),
-        fontSize: 24,
+        fontSize: 20,
     },
     list: {
         margin: 10,

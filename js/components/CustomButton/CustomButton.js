@@ -20,7 +20,6 @@ const CustomButton = ({ title }) => (
 
 CustomButton.propTypes = {
     title: PropTypes.string.isRequired,
-    faveFunc: PropTypes.func.isRequired,
 }
 
 export default CustomButton;

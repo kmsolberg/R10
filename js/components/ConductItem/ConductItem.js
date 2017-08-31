@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, LayoutAnimation, Animated } from 'react-native';
+import { View, 
+    Text, 
+    TouchableOpacity, 
+    LayoutAnimation, 
+    Animated,
+    Platform,
+    UIManager,
+} from 'react-native';
 
 import PropTypes from 'prop-types';
 
@@ -13,6 +20,11 @@ class ConductItem extends Component {
             display: false,
             spin: new Animated.Value(0),
         }
+
+        if (Platform.OS === 'android') {
+            UIManager.setLayoutAnimationEnabledExperimental 
+            && UIManager.setLayoutAnimationEnabledExperimental(true);
+          }
     }
 
     spinPlus = () => {

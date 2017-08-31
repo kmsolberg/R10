@@ -55,17 +55,17 @@ const Session = ({ sessionData, speakerData, isFave }) => (
 );
 
 Session.propTypes = {
-    sessionData: PropTypes.objectOf(PropTypes.shape({
-        title: PropTypes.number,
-        object: PropTypes.shape({
+    sessionData: PropTypes.shape({
+        title: PropTypes.string,
+        data: PropTypes.shape({
             description: PropTypes.string,
             location: PropTypes.string,
             session_id: PropTypes.string,
             speaker: PropTypes.string,
             start_time: PropTypes.number,
             title: PropTypes.string,
-        }),
-    })).isRequired,
+        })
+    }).isRequired,
     speakerData: PropTypes.shape({
         bio: PropTypes.string,
         image: PropTypes.string,
