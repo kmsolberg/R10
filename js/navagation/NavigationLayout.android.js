@@ -6,6 +6,7 @@ import {
 } from '@expo/ex-navigation';
 import { Text, View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient';
 
 import { Router } from './routes';
 
@@ -15,10 +16,16 @@ const defaultRouteConfig = {
     navigationBar: {
         backgroundColor: colors.purple,
         tintColor: 'white',
-    },
-    // renderBackground: () => (
-    //     // returning some component for the background...
-    // );
+        renderBackground: () => {
+            return (
+                <LinearGradient
+                    start={{ x: 0.0, y: 1.0 }} end={{ x: 1.0, y: 1.0 }}
+                    colors={[colors.red, colors.purple]}
+                    style={StyleSheet.absoluteFill}
+                />
+            )
+        },
+    }
 }
 class NavigationLayout extends Component {
     static route = {
