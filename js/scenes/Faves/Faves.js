@@ -16,11 +16,9 @@ const Faves = ({ favesData }) => (
             <Text style={styles.itemTitle}>{item.title}</Text>
             <View style={styles.location}>
               <Text style={styles.itemLocation}>{item.location}</Text>
-              {Platform.OS === 'ios' &&
-                <Icon name={"ios-heart"} color="red" />
-              }
-              {Platform.Version === 24 &&
-                <Icon name={"md-heart"} color="red" />
+              {Platform.OS === 'ios' 
+                ? <Icon name={"ios-heart"} color="red" size={16} /> 
+                : <Icon name={"md-heart"} color="red" size={16} />
               }
             </View>
           </View>

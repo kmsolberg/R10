@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     titleText: {
         fontWeight: 'bold',
         fontFamily: typography.fontMainAnd,
+        marginLeft: 10,
     },
 
     selectedTitleText: {
