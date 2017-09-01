@@ -19,6 +19,7 @@ class FavesContainer extends Component {
         this.props.dispatch(fetchFaves())
         this.props.dispatch(fetchFaveIds())
         realm.addListener('change', () => this.props.dispatch(fetchFaves()));
+        realm.addListener('change', () => this.props.dispatch(fetchFaveIds()));
     }
 
     render() {
@@ -38,6 +39,21 @@ class FavesContainer extends Component {
 FavesContainer.propTypes = {
     isLoading: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
+    data: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.number,
+        object: PropTypes.shape({
+          description: PropTypes.string,
+          location: PropTypes.string,
+          session_id: PropTypes.string,
+          speaker: PropTypes.string,
+          start_time: PropTypes.number,
+          title: PropTypes.string,
+        }),
+      })).isRequired,
+      favesID: PropTypes.arrayOf(PropTypes.shape({
+        faved_on: PropTypes.date,
+        id: PropTypes.string,
+      })).isRequired,
 }
 
 function mapStateToProps(state) {
