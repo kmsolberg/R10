@@ -28,6 +28,7 @@ class ConductItem extends Component {
     }
 
     spinPlus = () => {
+        this.state.spin.setValue(0)
         Animated.timing(
             this.state.spin,
             {
