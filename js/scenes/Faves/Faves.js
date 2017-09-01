@@ -5,6 +5,7 @@ import Moment from 'moment';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { styles } from './styles';
+import { colors } from '../../config/styles';
 import { goToSession } from '../../lib/navigationHelpers';
 
 const Faves = ({ favesData }) => (
@@ -17,8 +18,8 @@ const Faves = ({ favesData }) => (
             <View style={styles.location}>
               <Text style={styles.itemLocation}>{item.location}</Text>
               {Platform.OS === 'ios' 
-                ? <Icon name={"ios-heart"} color="red" size={16} /> 
-                : <Icon name={"md-heart"} color="red" size={16} />
+                ? <Icon name={"ios-heart"} color={colors.red} size={16} /> 
+                : <Icon name={"md-heart"} color={colors.red} size={16} />
               }
             </View>
           </View>
