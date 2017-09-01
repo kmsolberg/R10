@@ -12,7 +12,7 @@ class ScheduleContainer extends Component {
 
     static route = {
         navigationBar: {
-          title: 'Schedule',
+            title: 'Schedule',
         }
     };
 
@@ -23,16 +23,15 @@ class ScheduleContainer extends Component {
     }
 
     render() {
-        
         if (this.props.isLoading) {
             return (
-             <CustomActivityIndicator />
+                <CustomActivityIndicator />
             );
         } else {
             return (
-                <Schedule 
+                <Schedule
                     sessionData={this.props.data}
-                    favesData={this.props.faves} 
+                    favesData={this.props.faves}
                 />
             )
         }
@@ -52,7 +51,11 @@ ScheduleContainer.propTypes = {
             start_time: PropTypes.number,
             title: PropTypes.string,
         }),
-    })).isRequired
+    })).isRequired,
+    faves: PropTypes.arrayOf(PropTypes.shape({
+        faved_on: PropTypes.date,
+        id: PropTypes.string,
+    })).isRequired,
 }
 
 function mapStateToProps(state) {

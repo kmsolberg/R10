@@ -52,7 +52,7 @@ Schedule.propTypes = {
     }),
   })).isRequired,
   favesData: PropTypes.arrayOf(PropTypes.shape({
-    faved_on: PropTypes.string,
+    faved_on: PropTypes.date,
     id: PropTypes.string,
   })).isRequired,
 }

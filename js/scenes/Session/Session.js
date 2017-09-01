@@ -25,16 +25,20 @@ const Session = ({ sessionData, speakerData, isFave }) => (
         <Text style={styles.sessionTitle}>{sessionData.title}</Text>
         <Text style={styles.time}>{Moment.unix(sessionData.start_time).format('h:mm A')}</Text>
         <Text style={styles.description}>{sessionData.description}</Text>
-        <Text style={styles.greyText}>Presented by:</Text>
-        <TouchableOpacity onPress={() => goToSpeaker(speakerData)}>
-            <View style={styles.speaker}>
-                <Image
-                    style={styles.speakerPic}
-                    source={{ uri: speakerData.image }}
-                />
-                <Text style={styles.speakerName}>{speakerData.name}</Text>
+        {speakerData.name &&
+            <View>
+                <Text style={styles.greyText}>Presented by:</Text>
+                <TouchableOpacity onPress={() => goToSpeaker(speakerData)}>
+                    <View style={styles.speaker}>
+                        <Image
+                            style={styles.speakerPic}
+                            source={{ uri: speakerData.image }}
+                        />
+                        <Text style={styles.speakerName}>{speakerData.name}</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
-        </TouchableOpacity>
+        }
         <View style={styles.buttonContainer}>
             {isFave ? (
                 <TouchableOpacity onPress={() => removeFave(sessionData.session_id)}>
