@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator, LayoutAnimation } from 'react-native';
 import { connect } from 'react-redux';
 
 import { fetchConduct } from '../../redux/modules/conduct';
+import CustomActivityIndicator from '../../components/CustomActivityIndicator/';
 
 import About from './About';
 
@@ -19,12 +19,10 @@ class AboutContainer extends Component {
       this.props.dispatch(fetchConduct())
     }
 
-
-
     render() {
         if (this.props.isLoading) {
             return (
-             <ActivityIndicator animating={true} size="small" color="black" />
+             <CustomActivityIndicator />
             );
         } else {
             return (

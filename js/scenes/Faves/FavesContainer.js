@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 
 import Faves from './Faves';
 import { fetchFaves, fetchFaveIds } from '../../redux/modules/faves';
+import CustomActivityIndicator from '../../components/CustomActivityIndicator/';
 
 import realm from '../../config/models';
 class FavesContainer extends Component {
@@ -23,7 +23,7 @@ class FavesContainer extends Component {
     render() {
         if (this.props.isLoading) {
             return (
-             <ActivityIndicator animating={true} size="small" color="black" />
+             <CustomActivityIndicator />
             );
         } else {
             return <Faves favesData={this.props.data}/>;

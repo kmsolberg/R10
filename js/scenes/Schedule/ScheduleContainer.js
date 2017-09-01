@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 
 import { fetchSessions } from '../../redux/modules/sessions';
 import { fetchFaveIds } from '../../redux/modules/faves';
 import Schedule from './Schedule';
 import realm from '../../config/models';
+import CustomActivityIndicator from '../../components/CustomActivityIndicator/';
 
 class ScheduleContainer extends Component {
 
@@ -26,7 +26,7 @@ class ScheduleContainer extends Component {
         
         if (this.props.isLoading) {
             return (
-             <ActivityIndicator animating={true} size="small" color="black" />
+             <CustomActivityIndicator />
             );
         } else {
             return (

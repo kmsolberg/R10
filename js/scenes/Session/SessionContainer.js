@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 
+import CustomActivityIndicator from '../../components/CustomActivityIndicator/';
 import Session from './Session';
 import { fetchSpeakers } from '../../redux/modules/speakers';
 import { fetchFaveIds } from '../../redux/modules/faves';
@@ -26,7 +26,7 @@ class SessionContainer extends Component {
 
         if (this.props.isLoading) {
             return (
-                <ActivityIndicator animating={true} size="small" color="black" />
+                <CustomActivityIndicator />
             );
         } else {
             return <Session

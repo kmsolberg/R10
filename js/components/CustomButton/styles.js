@@ -1,4 +1,4 @@
-import { StyleSheet, Platform,   Dimensions,
+import { StyleSheet, Platform, Dimensions,
 } from 'react-native';
 
 import { colors, typography } from '../../config/styles';
