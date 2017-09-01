@@ -11,11 +11,9 @@ const Speaker = ({speakerData}) => (
     <View style={styles.container}>
         <View style={styles.header}>
             <TouchableOpacity onPress={() => popSpeaker()}>
-            {Platform.OS === 'ios' &&
-                <Icon name={"ios-close"} color="white" size={36} />
-            }
-            {Platform.Version === 24 &&
-                <Icon name={"md-close"} color="white" size={36} />
+            {Platform.OS === 'ios'
+                ? <Icon name={"ios-close"} color="white" size={36} />
+                : <Icon name={"md-close"} color="white" size={36} />
             }
             </TouchableOpacity>
             <Text style={styles.headerText}>About the Speaker</Text>
@@ -42,7 +40,14 @@ const Speaker = ({speakerData}) => (
 );
 
 Speaker.propTypes = {
-
+    speakerData: PropTypes.shape({
+        bio: PropTypes.string,
+        image: PropTypes.string,
+        name: PropTypes.string,
+        session: PropTypes.string,
+        speaker_id: PropTypes.string,
+        url: PropTypes.string,
+    }).isRequired
 };
 
 export default Speaker;

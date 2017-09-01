@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
 
-import { typography, colors } from '../../config/styles';
+import { typography } from '../../config/styles';
 
 export const styles = StyleSheet.create({
     container: {
@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
         backgroundColor: 'black',
     },
     header: {
-        color: 'white',
         height: 30,
         width: 220,
         justifyContent: 'space-between',
