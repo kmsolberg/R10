@@ -11,22 +11,26 @@ class FavesContainer extends Component {
 
     static route = {
         navigationBar: {
-          title: 'Faves',
+            title: 'Faves',
         }
     };
 
     componentDidMount() {
         this.props.dispatch(fetchFaves())
+        this.props.dispatch(fetchFaveIds())
         realm.addListener('change', () => this.props.dispatch(fetchFaves()));
     }
 
     render() {
         if (this.props.isLoading) {
             return (
-             <CustomActivityIndicator />
+                <CustomActivityIndicator />
             );
         } else {
-            return <Faves favesData={this.props.data}/>;
+            return <Faves 
+                favesData={this.props.data} 
+                favesID={this.props.favesID}
+            />;
         }
     }
 }
@@ -40,6 +44,7 @@ function mapStateToProps(state) {
     return {
         isLoading: state.faves.isLoading,
         data: state.faves.favesData,
+        favesID: state.faves.favesID,
     }
 }
 

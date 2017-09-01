@@ -1,38 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, TouchableOpacity, SectionList, Platform } from 'react-native';
-import Moment from 'moment';
-import Icon from 'react-native-vector-icons/Ionicons';
 
-import { styles } from './styles';
-import { colors } from '../../config/styles';
-import { goToSession } from '../../lib/navigationHelpers';
+import ScheduleList from '../../components/ScheduleList/';
 
-const Faves = ({ favesData }) => (
-  <SectionList
-    renderItem={({ item }) => {
-      return (
-        <TouchableOpacity onPress={() => goToSession('faves', item)}>
-          <View>
-            <Text style={styles.itemTitle}>{item.title}</Text>
-            <View style={styles.location}>
-              <Text style={styles.itemLocation}>{item.location}</Text>
-              {Platform.OS === 'ios' 
-                ? <Icon name={"ios-heart"} color={colors.red} size={16} /> 
-                : <Icon name={"md-heart"} color={colors.red} size={16} />
-              }
-            </View>
-          </View>
-        </TouchableOpacity>
-      )
-    }
-    }
-    renderSectionHeader={(item) => {
-      return <Text style={styles.sectionTitle}>{Moment.unix(item.section.title).format('h:mm A')}</Text>
-    }}
-    sections={favesData}
-    keyExtractor={item => item.title}
-    ItemSeparatorComponent={() => <View style={styles.border} />}
+const Faves = ({ favesData, favesID }) => (
+  <ScheduleList 
+    sessionData={favesData}
+    favesData={favesID}
+    route={'faves'}
   />
 );
 
@@ -48,6 +23,10 @@ Faves.propTypes = {
       title: PropTypes.string,
     }),
   })).isRequired,
+  favesID: PropTypes.arrayOf(PropTypes.shape({
+    faved_on: PropTypes.date,
+    id: PropTypes.string,
+})).isRequired,
 }
 
 export default Faves;
